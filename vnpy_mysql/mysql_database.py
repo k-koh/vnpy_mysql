@@ -67,11 +67,16 @@ class DbBarData(Model):
     high_price: DoubleField = DoubleField()
     low_price: DoubleField = DoubleField()
     close_price: DoubleField = DoubleField()
-    eris_p_iv: DoubleField = DoubleField()
-    eris_c_iv: DoubleField = DoubleField()
-    eris_p_strike: IntegerField = IntegerField()
-    eris_c_strike: IntegerField = IntegerField()
-
+    # Added fields for option IV storage
+    eris_p_strike: IntegerField = IntegerField(null=True)
+    eris_p_iv: DoubleField = DoubleField(null=True)
+    eris_c_strike: IntegerField = IntegerField(null=True)
+    eris_c_iv: DoubleField = DoubleField(null=True)
+    n225_vi: DoubleField = DoubleField(null=True)
+    underlying_price: IntegerField = IntegerField(null=True)
+    implied_volatility: DoubleField = DoubleField(null=True)
+    futures_option_type: IntegerField = IntegerField(null=True)
+    put_call_type: IntegerField = IntegerField(null=True)
 
     class Meta:
         database: PeeweeMySQLDatabase = db
@@ -325,10 +330,15 @@ class MysqlDatabase(BaseDatabase):
                 high_price=db_bar.high_price,
                 low_price=db_bar.low_price,
                 close_price=db_bar.close_price,
-                eris_p_iv=db_bar.eris_p_iv,
-                eris_c_iv=db_bar.eris_c_iv,
                 eris_p_strike=db_bar.eris_p_strike,
+                eris_p_iv=db_bar.eris_p_iv,
                 eris_c_strike=db_bar.eris_c_strike,
+                eris_c_iv=db_bar.eris_c_iv,
+                n225_vi=db_bar.n225_vi,
+                underlying_price=db_bar.underlying_price,
+                implied_volatility=db_bar.implied_volatility,
+                futures_option_type=db_bar.futures_option_type,
+                put_call_type=db_bar.put_call_type,
                 gateway_name="DB"
             )
             bars.append(bar)
