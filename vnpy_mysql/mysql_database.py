@@ -67,6 +67,11 @@ class DbBarData(Model):
     high_price: DoubleField = DoubleField()
     low_price: DoubleField = DoubleField()
     close_price: DoubleField = DoubleField()
+    eris_p_iv: DoubleField = DoubleField()
+    eris_c_iv: DoubleField = DoubleField()
+    eris_p_strike: IntegerField = IntegerField()
+    eris_c_strike: IntegerField = IntegerField()
+
 
     class Meta:
         database: PeeweeMySQLDatabase = db
@@ -320,6 +325,10 @@ class MysqlDatabase(BaseDatabase):
                 high_price=db_bar.high_price,
                 low_price=db_bar.low_price,
                 close_price=db_bar.close_price,
+                eris_p_iv=db_bar.eris_p_iv,
+                eris_c_iv=db_bar.eris_c_iv,
+                eris_p_strike=db_bar.eris_p_strike,
+                eris_c_strike=db_bar.eris_c_strike,
                 gateway_name="DB"
             )
             bars.append(bar)
