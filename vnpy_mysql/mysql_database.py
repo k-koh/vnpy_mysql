@@ -72,7 +72,15 @@ class DbBarData(Model):
     eris_p_iv: DoubleField = DoubleField(null=True)
     eris_c_strike: IntegerField = IntegerField(null=True)
     eris_c_iv: DoubleField = DoubleField(null=True)
+    atm_iv: DoubleField = DoubleField(null=True)
     n225_vi: DoubleField = DoubleField(null=True)
+    # Added fields for option
+    strike: IntegerField = IntegerField(null=True)
+    iv: DoubleField = DoubleField(null=True)
+    delta: DoubleField = DoubleField(null=True)
+    gamma: DoubleField = DoubleField(null=True)
+    vega: DoubleField = DoubleField(null=True)
+    theta: DoubleField = DoubleField(null=True)
     underlying_price: IntegerField = IntegerField(null=True)
     implied_volatility: DoubleField = DoubleField(null=True)
     futures_option_type: IntegerField = IntegerField(null=True)
@@ -334,7 +342,14 @@ class MysqlDatabase(BaseDatabase):
                 eris_p_iv=db_bar.eris_p_iv,
                 eris_c_strike=db_bar.eris_c_strike,
                 eris_c_iv=db_bar.eris_c_iv,
+                atm_iv=db_bar.atm_iv,
                 n225_vi=db_bar.n225_vi,
+                strike=db_bar.strike,
+                iv=db_bar.iv,
+                delta=db_bar.delta,
+                gamma=db_bar.gamma,
+                vega=db_bar.vega,
+                theta=db_bar.theta,
                 underlying_price=db_bar.underlying_price,
                 implied_volatility=db_bar.implied_volatility,
                 futures_option_type=db_bar.futures_option_type,
@@ -406,6 +421,62 @@ class MysqlDatabase(BaseDatabase):
             ticks.append(tick)
 
         return ticks
+
+    def load_option_data(
+        self,
+        symbol: str,
+        exchange: Exchange,
+        interval: Interval,
+        start: datetime,
+        end: datetime
+    ) -> list[BarData]:
+        """"""
+        s: ModelSelect = (
+            DbBarData.select().where(
+                (DbBarData.futures_option_type == 2)
+                & (DbBarData.iv != 0)
+                & (DbBarData.exchange == exchange.value)
+                & (DbBarData.interval == interval.value)
+                & (DbBarData.datetime >= start)
+                & (DbBarData.datetime <= end)
+            ).order_by(DbBarData.symbol)
+        )
+
+        bars: list[BarData] = []
+        for db_bar in s:
+            bar: BarData = BarData(
+                symbol=db_bar.symbol,
+                exchange=Exchange(db_bar.exchange),
+                datetime=datetime.fromtimestamp(db_bar.datetime.timestamp(), DB_TZ),
+                interval=Interval(db_bar.interval),
+                volume=db_bar.volume,
+                turnover=db_bar.turnover,
+                open_interest=db_bar.open_interest,
+                open_price=db_bar.open_price,
+                high_price=db_bar.high_price,
+                low_price=db_bar.low_price,
+                close_price=db_bar.close_price,
+                eris_p_strike=db_bar.eris_p_strike,
+                eris_p_iv=db_bar.eris_p_iv,
+                eris_c_strike=db_bar.eris_c_strike,
+                eris_c_iv=db_bar.eris_c_iv,
+                atm_iv=db_bar.atm_iv,
+                n225_vi=db_bar.n225_vi,
+                strike=db_bar.strike,
+                iv=db_bar.iv,
+                delta=db_bar.delta,
+                gamma=db_bar.gamma,
+                vega=db_bar.vega,
+                theta=db_bar.theta,
+                underlying_price=db_bar.underlying_price,
+                implied_volatility=db_bar.implied_volatility,
+                futures_option_type=db_bar.futures_option_type,
+                put_call_type=db_bar.put_call_type,
+                gateway_name="DB"
+            )
+            bars.append(bar)
+
+        return bars
 
     def delete_bar_data(
         self,
