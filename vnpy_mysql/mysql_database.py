@@ -67,6 +67,7 @@ class DbBarData(Model):
     high_price: DoubleField = DoubleField()
     low_price: DoubleField = DoubleField()
     close_price: DoubleField = DoubleField()
+    pre_close: DoubleField = DoubleField()
     # Added fields for option IV storage
     eris_p_strike: IntegerField = IntegerField(null=True)
     eris_p_iv: DoubleField = DoubleField(null=True)
@@ -338,6 +339,7 @@ class MysqlDatabase(BaseDatabase):
                 high_price=db_bar.high_price,
                 low_price=db_bar.low_price,
                 close_price=db_bar.close_price,
+                pre_close=db_bar.pre_close,
                 eris_p_strike=db_bar.eris_p_strike,
                 eris_p_iv=db_bar.eris_p_iv,
                 eris_c_strike=db_bar.eris_c_strike,
@@ -456,6 +458,7 @@ class MysqlDatabase(BaseDatabase):
                 high_price=db_bar.high_price,
                 low_price=db_bar.low_price,
                 close_price=db_bar.close_price,
+                pre_close=db_bar.pre_close,
                 eris_p_strike=db_bar.eris_p_strike,
                 eris_p_iv=db_bar.eris_p_iv,
                 eris_c_strike=db_bar.eris_c_strike,
