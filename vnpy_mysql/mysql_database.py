@@ -79,6 +79,8 @@ class DbBarData(Model):
     delta002_c_strike: IntegerField = IntegerField(null=True)  # Call Δ0.02 strike
     delta012_p_iv: DoubleField = DoubleField(null=True)  # Put Δ0.12 iv
     delta012_p_strike: IntegerField = IntegerField(null=True)  # Put Δ0.12 strike
+    delta002_p_iv: DoubleField = DoubleField(null=True)  # Put Δ0.02 iv
+    delta002_p_strike: IntegerField = IntegerField(null=True)  # Put Δ0.02 strike
     atm_iv: DoubleField = DoubleField(null=True)
     n225_vi: DoubleField = DoubleField(null=True)
     # Added fields for option
@@ -356,6 +358,8 @@ class MysqlDatabase(BaseDatabase):
                 delta002_c_strike=db_bar.delta002_c_strike,  # Call Δ0.02 strike
                 delta012_p_iv=db_bar.delta012_p_iv,  # Put Δ0.12 iv
                 delta012_p_strike=db_bar.delta012_p_strike,  # Put Δ0.12 strike
+                delta002_p_iv=db_bar.delta002_p_iv,  # Put Δ0.02 iv
+                delta002_p_strike=db_bar.delta002_p_strike,  # Put Δ0.02 strike
                 atm_iv=db_bar.atm_iv,
                 n225_vi=db_bar.n225_vi,
                 strike=db_bar.strike,
@@ -481,6 +485,8 @@ class MysqlDatabase(BaseDatabase):
                 delta002_c_strike=db_bar.delta002_c_strike,  # Call Δ0.02 strike
                 delta012_p_iv=db_bar.delta012_p_iv,  # Put Δ0.12 iv
                 delta012_p_strike=db_bar.delta012_p_strike,  # Put Δ0.12 strike
+                delta002_p_iv=db_bar.delta002_p_iv,  # Put Δ0.02 iv
+                delta002_p_strike=db_bar.delta002_p_strike,  # Put Δ0.02 strike
                 atm_iv=db_bar.atm_iv,
                 n225_vi=db_bar.n225_vi,
                 strike=db_bar.strike,
@@ -543,6 +549,8 @@ class MysqlDatabase(BaseDatabase):
                 delta002_c_strike=db_bar.delta002_c_strike,  # Call Δ0.02 strike
                 delta012_p_iv=db_bar.delta012_p_iv,  # Put Δ0.12 iv
                 delta012_p_strike=db_bar.delta012_p_strike,  # Put Δ0.12 strike
+                delta002_p_iv=db_bar.delta002_p_iv,  # Put Δ0.02 iv
+                delta002_p_strike=db_bar.delta002_p_strike,  # Put Δ0.02 strike
                 atm_iv=db_bar.atm_iv,
                 n225_vi=db_bar.n225_vi,
                 strike=db_bar.strike,
