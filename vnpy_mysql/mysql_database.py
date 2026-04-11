@@ -73,14 +73,6 @@ class DbBarData(Model):
     eris_p_iv: DoubleField = DoubleField(null=True)
     eris_c_strike: IntegerField = IntegerField(null=True)
     eris_c_iv: DoubleField = DoubleField(null=True)
-    delta022_c_iv: DoubleField = DoubleField(null=True)  # Call Δ0.22 iv
-    delta022_c_strike: IntegerField = IntegerField(null=True)  # Call Δ0.22 strike
-    delta002_c_iv: DoubleField = DoubleField(null=True)  # Call Δ0.02 iv
-    delta002_c_strike: IntegerField = IntegerField(null=True)  # Call Δ0.02 strike
-    delta012_p_iv: DoubleField = DoubleField(null=True)  # Put Δ0.12 iv
-    delta012_p_strike: IntegerField = IntegerField(null=True)  # Put Δ0.12 strike
-    delta002_p_iv: DoubleField = DoubleField(null=True)  # Put Δ0.02 iv
-    delta002_p_strike: IntegerField = IntegerField(null=True)  # Put Δ0.02 strike
     atm_iv: DoubleField = DoubleField(null=True)
     n225_vi: DoubleField = DoubleField(null=True)
     # Added fields for option
@@ -352,14 +344,6 @@ class MysqlDatabase(BaseDatabase):
                 eris_p_iv=db_bar.eris_p_iv,
                 eris_c_strike=db_bar.eris_c_strike,
                 eris_c_iv=db_bar.eris_c_iv,
-                delta022_c_iv=db_bar.delta022_c_iv,  # Call Δ0.22 iv
-                delta022_c_strike=db_bar.delta022_c_strike,  # Call Δ0.22 strike
-                delta002_c_iv=db_bar.delta002_c_iv,  # Call Δ0.02 iv
-                delta002_c_strike=db_bar.delta002_c_strike,  # Call Δ0.02 strike
-                delta012_p_iv=db_bar.delta012_p_iv,  # Put Δ0.12 iv
-                delta012_p_strike=db_bar.delta012_p_strike,  # Put Δ0.12 strike
-                delta002_p_iv=db_bar.delta002_p_iv,  # Put Δ0.02 iv
-                delta002_p_strike=db_bar.delta002_p_strike,  # Put Δ0.02 strike
                 atm_iv=db_bar.atm_iv,
                 n225_vi=db_bar.n225_vi,
                 strike=db_bar.strike,
@@ -479,14 +463,6 @@ class MysqlDatabase(BaseDatabase):
                 eris_p_iv=db_bar.eris_p_iv,
                 eris_c_strike=db_bar.eris_c_strike,
                 eris_c_iv=db_bar.eris_c_iv,
-                delta022_c_iv=db_bar.delta022_c_iv,  # Call Δ0.22 iv
-                delta022_c_strike=db_bar.delta022_c_strike,  # Call Δ0.22 strike
-                delta002_c_iv=db_bar.delta002_c_iv,  # Call Δ0.02 iv
-                delta002_c_strike=db_bar.delta002_c_strike,  # Call Δ0.02 strike
-                delta012_p_iv=db_bar.delta012_p_iv,  # Put Δ0.12 iv
-                delta012_p_strike=db_bar.delta012_p_strike,  # Put Δ0.12 strike
-                delta002_p_iv=db_bar.delta002_p_iv,  # Put Δ0.02 iv
-                delta002_p_strike=db_bar.delta002_p_strike,  # Put Δ0.02 strike
                 atm_iv=db_bar.atm_iv,
                 n225_vi=db_bar.n225_vi,
                 strike=db_bar.strike,
@@ -543,14 +519,6 @@ class MysqlDatabase(BaseDatabase):
                 eris_p_iv=db_bar.eris_p_iv,
                 eris_c_strike=db_bar.eris_c_strike,
                 eris_c_iv=db_bar.eris_c_iv,
-                delta022_c_iv=db_bar.delta022_c_iv,  # Call Δ0.22 iv
-                delta022_c_strike=db_bar.delta022_c_strike,  # Call Δ0.22 strike
-                delta002_c_iv=db_bar.delta002_c_iv,  # Call Δ0.02 iv
-                delta002_c_strike=db_bar.delta002_c_strike,  # Call Δ0.02 strike
-                delta012_p_iv=db_bar.delta012_p_iv,  # Put Δ0.12 iv
-                delta012_p_strike=db_bar.delta012_p_strike,  # Put Δ0.12 strike
-                delta002_p_iv=db_bar.delta002_p_iv,  # Put Δ0.02 iv
-                delta002_p_strike=db_bar.delta002_p_strike,  # Put Δ0.02 strike
                 atm_iv=db_bar.atm_iv,
                 n225_vi=db_bar.n225_vi,
                 strike=db_bar.strike,
