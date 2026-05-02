@@ -75,6 +75,12 @@ class DbBarData(Model):
     eris_c_strike: IntegerField = IntegerField(null=True)
     eris_c_iv: DoubleField = DoubleField(null=True)
     eris_c_delta: DoubleField = DoubleField(null=True)
+    delta002_p_strike: IntegerField = IntegerField(null=True)
+    delta002_p_iv: DoubleField = DoubleField(null=True)
+    delta002_p_delta: DoubleField = DoubleField(null=True)
+    delta002_c_strike: IntegerField = IntegerField(null=True)
+    delta002_c_iv: DoubleField = DoubleField(null=True)
+    delta002_c_delta: DoubleField = DoubleField(null=True)
     atm_iv: DoubleField = DoubleField(null=True)
     n225_vi: DoubleField = DoubleField(null=True)
     # Added fields for option
@@ -348,6 +354,12 @@ class MysqlDatabase(BaseDatabase):
                 eris_c_strike=db_bar.eris_c_strike,
                 eris_c_iv=db_bar.eris_c_iv,
                 eris_c_delta=db_bar.eris_c_delta or 0,
+                delta002_p_strike=db_bar.delta002_p_strike or 0,
+                delta002_p_iv=db_bar.delta002_p_iv or 0,
+                delta002_p_delta=db_bar.delta002_p_delta or 0,
+                delta002_c_strike=db_bar.delta002_c_strike or 0,
+                delta002_c_iv=db_bar.delta002_c_iv or 0,
+                delta002_c_delta=db_bar.delta002_c_delta or 0,
                 atm_iv=db_bar.atm_iv,
                 n225_vi=db_bar.n225_vi,
                 strike=db_bar.strike,
@@ -469,6 +481,12 @@ class MysqlDatabase(BaseDatabase):
                 eris_c_strike=db_bar.eris_c_strike,
                 eris_c_iv=db_bar.eris_c_iv,
                 eris_c_delta=db_bar.eris_c_delta or 0,
+                delta002_p_strike=db_bar.delta002_p_strike or 0,
+                delta002_p_iv=db_bar.delta002_p_iv or 0,
+                delta002_p_delta=db_bar.delta002_p_delta or 0,
+                delta002_c_strike=db_bar.delta002_c_strike or 0,
+                delta002_c_iv=db_bar.delta002_c_iv or 0,
+                delta002_c_delta=db_bar.delta002_c_delta or 0,
                 atm_iv=db_bar.atm_iv,
                 n225_vi=db_bar.n225_vi,
                 strike=db_bar.strike,
@@ -527,6 +545,12 @@ class MysqlDatabase(BaseDatabase):
                 eris_c_strike=db_bar.eris_c_strike,
                 eris_c_iv=db_bar.eris_c_iv,
                 eris_c_delta=db_bar.eris_c_delta or 0,
+                delta002_p_strike=db_bar.delta002_p_strike or 0,
+                delta002_p_iv=db_bar.delta002_p_iv or 0,
+                delta002_p_delta=db_bar.delta002_p_delta or 0,
+                delta002_c_strike=db_bar.delta002_c_strike or 0,
+                delta002_c_iv=db_bar.delta002_c_iv or 0,
+                delta002_c_delta=db_bar.delta002_c_delta or 0,
                 atm_iv=db_bar.atm_iv,
                 n225_vi=db_bar.n225_vi,
                 strike=db_bar.strike,
