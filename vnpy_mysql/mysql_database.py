@@ -83,6 +83,12 @@ class DbBarData(Model):
     delta002_c_delta: DoubleField = DoubleField(null=True)
     atm_iv: DoubleField = DoubleField(null=True)
     atm_level_iv: DoubleField = DoubleField(null=True)
+    atm_buy_volume: DoubleField = DoubleField(null=True)
+    atm_sell_volume: DoubleField = DoubleField(null=True)
+    eris_p_buy_volume: DoubleField = DoubleField(null=True)
+    eris_p_sell_volume: DoubleField = DoubleField(null=True)
+    eris_c_buy_volume: DoubleField = DoubleField(null=True)
+    eris_c_sell_volume: DoubleField = DoubleField(null=True)
     n225_vi: DoubleField = DoubleField(null=True)
     # Added fields for option
     strike: IntegerField = IntegerField(null=True)
@@ -363,6 +369,12 @@ class MysqlDatabase(BaseDatabase):
                 delta002_c_delta=db_bar.delta002_c_delta or 0,
                 atm_iv=db_bar.atm_iv,
                 atm_level_iv=db_bar.atm_level_iv,
+                atm_buy_volume=db_bar.atm_buy_volume,
+                atm_sell_volume=db_bar.atm_sell_volume,
+                eris_p_buy_volume=db_bar.eris_p_buy_volume,
+                eris_p_sell_volume=db_bar.eris_p_sell_volume,
+                eris_c_buy_volume=db_bar.eris_c_buy_volume,
+                eris_c_sell_volume=db_bar.eris_c_sell_volume,
                 n225_vi=db_bar.n225_vi,
                 strike=db_bar.strike,
                 iv=db_bar.iv,
@@ -491,6 +503,12 @@ class MysqlDatabase(BaseDatabase):
                 delta002_c_delta=db_bar.delta002_c_delta or 0,
                 atm_iv=db_bar.atm_iv,
                 atm_level_iv=db_bar.atm_level_iv,
+                atm_buy_volume=db_bar.atm_buy_volume,
+                atm_sell_volume=db_bar.atm_sell_volume,
+                eris_p_buy_volume=db_bar.eris_p_buy_volume,
+                eris_p_sell_volume=db_bar.eris_p_sell_volume,
+                eris_c_buy_volume=db_bar.eris_c_buy_volume,
+                eris_c_sell_volume=db_bar.eris_c_sell_volume,
                 n225_vi=db_bar.n225_vi,
                 strike=db_bar.strike,
                 iv=db_bar.iv,
@@ -556,6 +574,12 @@ class MysqlDatabase(BaseDatabase):
                 delta002_c_delta=db_bar.delta002_c_delta or 0,
                 atm_iv=db_bar.atm_iv,
                 atm_level_iv=db_bar.atm_level_iv,
+                atm_buy_volume=db_bar.atm_buy_volume,
+                atm_sell_volume=db_bar.atm_sell_volume,
+                eris_p_buy_volume=db_bar.eris_p_buy_volume,
+                eris_p_sell_volume=db_bar.eris_p_sell_volume,
+                eris_c_buy_volume=db_bar.eris_c_buy_volume,
+                eris_c_sell_volume=db_bar.eris_c_sell_volume,
                 n225_vi=db_bar.n225_vi,
                 strike=db_bar.strike,
                 iv=db_bar.iv,
